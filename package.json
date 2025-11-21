@@ -1,9 +1,7 @@
 {
   "private": true,
-  "type": "module",
   "scripts": {
-    "cb": "composer update && bun update",
-    "prepare": "husky"
+    "cb": "composer update && bun update"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
