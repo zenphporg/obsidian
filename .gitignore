@@ -1,6 +1,5 @@
 .DS_Store
 .vscode/
-REBUILD.md
 vendor/
 node_modules/
 composer.lock

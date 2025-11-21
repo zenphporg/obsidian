@@ -1,9 +1,14 @@
-# Obsidian
+![Zen Foundation](https://raw.githubusercontent.com/zenphporg/.github/main/img/zenphp.png)
 
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/zenphporg/obsidian)
-[![Code Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/zenphporg/obsidian)
-[![PHP Version](https://img.shields.io/badge/php-%5E8.4-blue)](https://php.net)
-[![Laravel Version](https://img.shields.io/badge/laravel-%5E12.0-red)](https://laravel.com)
+<p align="center">
+<a href="https://github.com/zenphporg/obsidian/blob/main/coverage.xml"><img src="https://img.shields.io/badge/dynamic/xml?color=success&label=coverage&query=round%28%2F%2Fcoverage%2Fproject%2Fmetrics%2F%40coveredelements%20div%20%2F%2Fcoverage%2Fproject%2Fmetrics%2F%40elements%20%2A%20100%29&suffix=%25&url=https%3A%2F%2Fraw.githubusercontent.com%2Fzenphporg%2Fobsidian%2Fmain%2Fcoverage.xml" alt="Coverage"></a>
+<a href="https://github.com/zenphporg/obsidian/actions"><img src="https://img.shields.io/github/actions/workflow/status/zenphporg/obsidian/maintenance.yml" alt="Build Status"></a>
+<a href="https://packagist.org/packages/zenphp/obsidian"><img src="https://img.shields.io/packagist/dt/zenphp/obsidian" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/zenphp/obsidian"><img src="https://img.shields.io/packagist/v/zenphp/obsidian" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/zenphp/obsidian"><img src="https://img.shields.io/packagist/l/zenphp/obsidian" alt="License"></a>
+</p>
+
+# About Obsidian
 
 Obsidian provides expressive, fluent subscription billing for Laravel applications using **CCBill** and **SegPay** payment processors. Built specifically for adult content platforms and high-risk merchants who need reliable, compliant payment processing.
 

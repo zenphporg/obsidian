@@ -1,0 +1,7 @@
+composer lint
+
+composer test:static
+
+composer test:types
+
+composer test:feat
