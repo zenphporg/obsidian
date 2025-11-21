@@ -10,6 +10,7 @@
 /.gitignore export-ignore
 /.github export-ignore
 /.husky export-ignore
+/bin export-ignore
 /tests export-ignore
 /release.config.js export-ignore
 /package.json export-ignore

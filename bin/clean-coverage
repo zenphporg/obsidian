@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+// Get the project root (assuming this script is in bin/)
+$projectRoot = dirname(__DIR__);
+$coverageFile = $projectRoot . '/coverage.xml';
+
+// Check if coverage.xml exists
+if (!file_exists($coverageFile)) {
+    echo "Coverage file not found at {$coverageFile}\n";
+    exit(0);
+}
+
+// Read the coverage file
+$content = file_get_contents($coverageFile);
+
+// Replace absolute paths with relative paths
+$content = str_replace($projectRoot . '/', '', $content);
+
+// Write back to the file
+file_put_contents($coverageFile, $content);
+
+echo "✓ Cleaned coverage.xml - removed absolute paths\n";
+

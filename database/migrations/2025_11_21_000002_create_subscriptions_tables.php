@@ -47,6 +47,16 @@ return new class extends Migration
       $table->index(['user_id', 'name']);
       $table->index('gateway_subscription_id');
     });
+
+    Schema::create('subscription_items', function (Blueprint $table): void {
+      $table->id();
+      $table->foreignId('subscription_id')->constrained()->cascadeOnDelete();
+      $table->string('name')->default('default');
+      $table->boolean('on_trial')->default(false);
+      $table->timestamp('trial_started_at')->nullable();
+      $table->timestamp('trial_ends_at')->nullable();
+      $table->timestamps();
+    });
   }
 
   /**
@@ -55,5 +65,6 @@ return new class extends Migration
   public function down(): void
   {
     Schema::dropIfExists('subscriptions');
+    Schema::dropIfExists('subscription_items');
   }
 };

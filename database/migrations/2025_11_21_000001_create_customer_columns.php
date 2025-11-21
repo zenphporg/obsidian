@@ -14,7 +14,7 @@ return new class extends Migration
   public function up(): void
   {
     Schema::table('users', function (Blueprint $table): void {
-      $table->timestamp('trial_ends_at')->nullable();
+      $table->timestamp('trial_ends_at')->nullable()->after('password');
     });
   }
 
