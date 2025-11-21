@@ -560,15 +560,15 @@ The `VerifyRedirectUrl` middleware prevents open redirect vulnerabilities by ens
 
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability, please email security@zenphp.org. All security vulnerabilities will be promptly addressed.
+Please review [our security policy](https://github.com/zenphporg/obsidian/security/policy) on how to report security vulnerabilities.
 
 ## License
 
-Obsidian is open-sourced software licensed under the [MIT license](LICENSE.md).
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 ## Credits
 
@@ -578,6 +578,5 @@ Obsidian is open-sourced software licensed under the [MIT license](LICENSE.md).
 
 ## Support
 
-- **Documentation**: [https://docs.zenphp.org/obsidian](https://docs.zenphp.org/obsidian)
+- **Documentation**: Coming soon ...
 - **Issues**: [GitHub Issues](https://github.com/zenphporg/obsidian/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/zenphporg/obsidian/discussions)
