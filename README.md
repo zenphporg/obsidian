@@ -2,10 +2,10 @@
 
 <p align="center">
 <a href="https://github.com/zenphporg/obsidian/blob/main/coverage.xml"><img src="https://img.shields.io/badge/dynamic/xml?color=success&label=coverage&query=round%28%2F%2Fcoverage%2Fproject%2Fmetrics%2F%40coveredelements%20div%20%2F%2Fcoverage%2Fproject%2Fmetrics%2F%40elements%20%2A%20100%29&suffix=%25&url=https%3A%2F%2Fraw.githubusercontent.com%2Fzenphporg%2Fobsidian%2Fmain%2Fcoverage.xml" alt="Coverage"></a>
-<a href="https://github.com/zenphporg/obsidian/actions"><img src="https://img.shields.io/github/actions/workflow/status/zenphporg/obsidian/maintenance.yml" alt="Build Status"></a>
+<a href="https://github.com/zenphporg/obsidian/actions"><img src="https://img.shields.io/github/actions/workflow/status/zenphporg/obsidian/main.yml?branch=main" alt="Build Status"></a>
 <a href="https://packagist.org/packages/zenphp/obsidian"><img src="https://img.shields.io/packagist/dt/zenphp/obsidian" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/zenphp/obsidian"><img src="https://img.shields.io/packagist/v/zenphp/obsidian" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/zenphp/obsidian"><img src="https://img.shields.io/packagist/l/zenphp/obsidian" alt="License"></a>
+<a href="https://packagist.org/packages/zenphp/obsidian"><img src="https://img.shields.io/packagist/l/zenphp/obsidian.svg" alt="License"></a>
 </p>
 
 # About Obsidian
@@ -14,14 +14,14 @@ Obsidian provides expressive, fluent subscription billing for Laravel applicatio
 
 ## Features
 
-- 🔄 **Multiple Payment Gateways** - Support for CCBill and SegPay with automatic failover
-- 💳 **Subscription Management** - Create, cancel, and manage recurring subscriptions
-- 🎯 **Trial Periods** - Built-in support for trial subscriptions
-- 🔔 **Webhook Handling** - Automatic webhook processing with signature validation
-- 💰 **One-Time Charges** - Process single payments alongside subscriptions
-- 🧪 **Fake Gateway** - Test your billing logic without hitting real APIs
-- 📊 **100% Test Coverage** - Fully tested with comprehensive mocked responses
-- 🔒 **Type Safe** - Full PHP 8.4 type coverage with PHPStan level max
+- **Multiple Payment Gateways** - Support for CCBill and SegPay with automatic failover
+- **Subscription Management** - Create, cancel, and manage recurring subscriptions
+- **Trial Periods** - Built-in support for trial subscriptions
+- **Webhook Handling** - Automatic webhook processing with signature validation
+- **One-Time Charges** - Process single payments alongside subscriptions
+- **Fake Gateway** - Test your billing logic without hitting real APIs
+- **100% Test Coverage** - Fully tested with comprehensive mocked responses
+- **Type Safe** - Full PHP 8.4 type coverage with PHPStan level max
 
 ## Requirements
 
@@ -34,7 +34,7 @@ Obsidian provides expressive, fluent subscription billing for Laravel applicatio
 Install the package via Composer:
 
 ```bash
-composer require zenphporg/obsidian
+composer require zenphp/obsidian
 ```
 
 ### Publish Configuration
