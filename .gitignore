@@ -1,0 +1,6 @@
+.DS_Store
+REBUILD.md
+vendor/
+node_modules/
+composer.lock
+coverage.xml
