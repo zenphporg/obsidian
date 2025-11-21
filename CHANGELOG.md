@@ -1,5 +1,17 @@
 # Release Notes
 
+## [1.0.1](https://github.com/zenphporg/obsidian/compare/v1.0.0...v1.0.1) (2025-11-21)
+
+
+### Bug Fixes
+
+* adjusted coverage script and migrations ([fb053be](https://github.com/zenphporg/obsidian/commit/fb053bec27d6baaa0c87cf8bb0b5c27981fdc3ce))
+
+
+### Maintenance
+
+* fixed badges and added 8.5 tests ([010c14d](https://github.com/zenphporg/obsidian/commit/010c14d9d5ce2f4d84175c5df528d1c6b4b30a78))
+
 # 1.0.0 (2025-11-21)
 
 
