@@ -1,4 +1,8 @@
-![Zen Foundation](https://raw.githubusercontent.com/zenphporg/.github/main/img/zenphp.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/img/dark.png">
+  <source media="(prefers-color-scheme: light)" srcset=".github/img/light.png">
+  <img alt="Obsidian" src=".github/img/light.png">
+</picture>
 
 <p align="center">
 <a href="https://github.com/zenphporg/obsidian/blob/main/coverage.xml"><img src="https://img.shields.io/badge/dynamic/xml?color=success&label=coverage&query=round%28%2F%2Fcoverage%2Fproject%2Fmetrics%2F%40coveredelements%20div%20%2F%2Fcoverage%2Fproject%2Fmetrics%2F%40elements%20%2A%20100%29&suffix=%25&url=https%3A%2F%2Fraw.githubusercontent.com%2Fzenphporg%2Fobsidian%2Fmain%2Fcoverage.xml" alt="Coverage"></a>
