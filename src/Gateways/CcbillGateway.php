@@ -92,6 +92,7 @@ class CcbillGateway implements PaymentGatewayInterface
 
     $credentials = base64_encode("{$this->merchantAppId}:{$this->secretKey}");
 
+    /** @var Response $response */
     $response = Http::withHeaders([
       'Authorization' => "Basic {$credentials}",
       'Content-Type' => 'application/x-www-form-urlencoded',
@@ -187,6 +188,7 @@ class CcbillGateway implements PaymentGatewayInterface
       $payload['email'] = $user->email;
     }
 
+    /** @var Response $response */
     $response = Http::withHeaders($this->buildApiHeaders())
       ->post(self::API_BASE."/transactions/payment-tokens/{$token}", $payload);
 
@@ -240,6 +242,7 @@ class CcbillGateway implements PaymentGatewayInterface
       'returnXML' => '1',
     ]);
 
+    /** @var Response $response */
     $response = Http::get(self::DATALINK_BASE."/utils/subscriptionManagement.cgi?{$queryParams}");
 
     if (! $response->successful()) {
@@ -313,6 +316,7 @@ class CcbillGateway implements PaymentGatewayInterface
       'currencyCode' => $this->getCurrencyCode($currency),
     ];
 
+    /** @var Response $response */
     $response = Http::withHeaders($this->buildApiHeaders())
       ->post(self::API_BASE."/transactions/payment-tokens/{$token}", $payload);
 
