@@ -1,5 +1,17 @@
 # Release Notes
 
+## [1.0.3](https://github.com/zenphporg/obsidian/compare/v1.0.2...v1.0.3) (2025-12-03)
+
+
+### Bug Fixes
+
+* removed all views instances ([8829477](https://github.com/zenphporg/obsidian/commit/88294773b3a9c35559a44f57d710f1b8d83c5e8b))
+
+
+### Maintenance
+
+* remove agent task document ([953107b](https://github.com/zenphporg/obsidian/commit/953107bcd3811d47d4ec5d8c04447e5f91c6b3db))
+
 ## [1.0.2](https://github.com/zenphporg/obsidian/compare/v1.0.1...v1.0.2) (2025-12-03)
 
 
