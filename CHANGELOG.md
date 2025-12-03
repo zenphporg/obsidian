@@ -1,5 +1,22 @@
 # Release Notes
 
+## [1.0.2](https://github.com/zenphporg/obsidian/compare/v1.0.1...v1.0.2) (2025-12-03)
+
+
+### Bug Fixes
+
+* phpstan static errors ([442a076](https://github.com/zenphporg/obsidian/commit/442a076fea61cfd704204b0afb45cb56a520c1d0))
+
+
+### Code Refactoring
+
+* moved segpay to wip finalized ccbill ([ba0839c](https://github.com/zenphporg/obsidian/commit/ba0839c3e0df35a6650e945e656261abb88b7869))
+
+
+### Maintenance
+
+* github logo ([270f7bf](https://github.com/zenphporg/obsidian/commit/270f7bf1f6e11cd91bca330e6768dc7d0ab45afd))
+
 ## [1.0.1](https://github.com/zenphporg/obsidian/compare/v1.0.0...v1.0.1) (2025-11-21)
 
 
