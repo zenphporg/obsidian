@@ -4,3 +4,4 @@ vendor/
 node_modules/
 composer.lock
 bun.lock
+AGENT_TASK.md
