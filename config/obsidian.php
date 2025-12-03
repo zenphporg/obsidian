@@ -28,21 +28,38 @@ return [
 
   /**
    * CCBILL CONFIGURATION
+   *
+   * CCBill requires two sets of OAuth credentials:
+   * - Frontend: For FlexForms payment widget (merchant_app_id + secret_key)
+   * - Backend: For REST API calls (same credentials, different usage)
+   *
+   * DataLink credentials are required for subscription cancellation.
    */
   'ccbill' => [
+    // Account identifiers
     'merchant_id' => env('CCBILL_MERCHANT_ID'),
     'subaccount_id' => env('CCBILL_SUBACCOUNT_ID'),
-    'api_key' => env('CCBILL_API_KEY'),
-    'api_secret' => env('CCBILL_API_SECRET'),
-    'salt' => env('CCBILL_SALT'),
+
+    // OAuth 2.0 credentials (from CCBill Admin > Account Info > API Credentials)
+    'merchant_app_id' => env('CCBILL_MERCHANT_APP_ID'),
+    'secret_key' => env('CCBILL_SECRET_KEY'),
+
+    // DataLink credentials (for subscription management)
+    'datalink_username' => env('CCBILL_DATALINK_USERNAME'),
+    'datalink_password' => env('CCBILL_DATALINK_PASSWORD'),
+
+    // Webhook signature verification
     'webhook_secret' => env('CCBILL_WEBHOOK_SECRET'),
 
     // FlexForms configuration
-    'flexforms_url' => env('CCBILL_FLEXFORMS_URL', 'https://bill.ccbill.com/jpost/signup.cgi'),
+    'flexforms_url' => env('CCBILL_FLEXFORMS_URL', 'https://api.ccbill.com/wap-frontflex/flexforms'),
   ],
 
   /**
    * SEGPAY CONFIGURATION
+   *
+   * Note: SegPay integration is not yet implemented.
+   * These configuration options are placeholders for future development.
    */
   'segpay' => [
     'merchant_id' => env('SEGPAY_MERCHANT_ID'),

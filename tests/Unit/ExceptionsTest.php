@@ -15,5 +15,15 @@ test('webhook validation exception can be thrown', function (): void {
 
 test('webhook validation exception can be created with invalid signature', function (): void {
   expect(fn () => throw WebhookValidationException::invalidSignature())
-    ->toThrow(WebhookValidationException::class, 'The webhook signature is invalid.');
+    ->toThrow(WebhookValidationException::class, 'Invalid webhook signature');
+});
+
+test('webhook validation exception can be created with missing secret', function (): void {
+  expect(fn () => throw WebhookValidationException::missingSecret())
+    ->toThrow(WebhookValidationException::class, 'Webhook secret not configured');
+});
+
+test('webhook validation exception can be created with missing signature', function (): void {
+  expect(fn () => throw WebhookValidationException::missingSignature())
+    ->toThrow(WebhookValidationException::class, 'Webhook signature header missing');
 });

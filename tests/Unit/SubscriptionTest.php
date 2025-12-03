@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Http;
 use Tests\Fixtures\User;
 
 test('subscription belongs to user', function (): void {
@@ -17,7 +16,7 @@ test('subscription belongs to user', function (): void {
     ->and($subscription->user->id)->toBe($user->id);
 });
 
-test('subscription can be cancelled with API failure', function (): void {
+test('subscription can be cancelled with API failure for segpay', function (): void {
   $user = User::factory()->create();
   $subscription = $user->subscriptions()->create([
     'name' => 'default',
@@ -27,22 +26,16 @@ test('subscription can be cancelled with API failure', function (): void {
     'status' => 'active',
   ]);
 
-  // Mock HTTP to fail the cancellation
-  Http::fake([
-    'api.segpay.com/cancel' => Http::response([
-      'error' => 'API Error',
-    ], 500),
-  ]);
-
+  // SegPay gateway is not yet implemented, so it will throw GatewayException
   try {
     $subscription->cancel();
     expect(true)->toBeFalse('Should have thrown an exception');
   } catch (Exception $e) {
-    // Exception should be thrown
-    expect($e->getMessage())->toContain('SegPay cancellation failed');
+    // Exception should be thrown - SegPay is not implemented
+    expect($e->getMessage())->toContain('SegPay gateway is not yet implemented');
   }
 
-  // Subscription should still be marked as cancelled
+  // Subscription should still be marked as cancelled locally
   $subscription->refresh();
   expect($subscription->status)->toBe('cancelled')
     ->and($subscription->ends_at)->not->toBeNull();

@@ -37,14 +37,15 @@ class CcbillWebhookController extends Controller
     // Parse webhook
     $event = $gateway->parseWebhookPayload($payload);
 
-    // Handle different event types
+    // Handle different event types (using normalized types from gateway)
     return match ($event['type']) {
-      'NewSaleSuccess' => $this->handleNewSale($event),
-      'RenewalSuccess' => $this->handleRenewal($event),
-      'RenewalFailure' => $this->handleRenewalFailure($event),
-      'Cancellation' => $this->handleCancellation($event),
-      'Chargeback' => $this->handleChargeback($event),
-      'Refund' => $this->handleRefund($event),
+      'subscription.created' => $this->handleNewSale($event),
+      'payment.succeeded' => $this->handleRenewal($event),
+      'payment.failed' => $this->handleRenewalFailure($event),
+      'subscription.cancelled' => $this->handleCancellation($event),
+      'subscription.chargeback' => $this->handleChargeback($event),
+      'payment.refunded' => $this->handleRefund($event),
+      'subscription.expired' => $this->handleCancellation($event),
       default => response('Webhook received', 200),
     };
   }

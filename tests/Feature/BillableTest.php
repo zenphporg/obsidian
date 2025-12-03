@@ -53,7 +53,7 @@ test('user can charge one-time payment', function (): void {
   $result = $user->charge(2999, 'fake_token_123');
 
   expect($result)
-    ->toHaveKey('transaction_id')
+    ->toHaveKey('id')
     ->toHaveKey('amount')
     ->and($result['amount'])->toBe(2999);
 });

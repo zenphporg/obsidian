@@ -8,12 +8,18 @@ use Exception;
 
 class WebhookValidationException extends Exception
 {
-  /**
-   * Create a new WebhookValidationException instance.
-   */
-  public static function invalidSignature(): static
+  public static function invalidSignature(): self
   {
-    /** @phpstan-ignore new.static */
-    return new static('The webhook signature is invalid.');
+    return new self('Invalid webhook signature', 403);
+  }
+
+  public static function missingSecret(): self
+  {
+    return new self('Webhook secret not configured', 500);
+  }
+
+  public static function missingSignature(): self
+  {
+    return new self('Webhook signature header missing', 400);
   }
 }

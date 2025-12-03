@@ -16,9 +16,19 @@
 
 Obsidian provides expressive, fluent subscription billing for Laravel applications using **CCBill** and **SegPay** payment processors. Built specifically for adult content platforms and high-risk merchants who need reliable, compliant payment processing.
 
+## Gateway Support Status
+
+| Gateway | Status | Subscriptions | One-Time Charges | Webhooks | Cancellation |
+|---------|--------|---------------|------------------|----------|--------------|
+| CCBill  | ✅ Implemented | ✅ | ✅ | ✅ | ✅ (via DataLink) |
+| SegPay  | 🚧 Planned | ❌ | ❌ | ❌ | ❌ |
+| Fake    | ✅ Implemented | ✅ | ✅ | ✅ | ✅ |
+
+> **Note:** SegPay integration is planned for a future release. Currently, all SegPay gateway methods will throw a `GatewayException`.
+
 ## Features
 
-- **Multiple Payment Gateways** - Support for CCBill and SegPay with automatic failover
+- **Multiple Payment Gateways** - Support for CCBill with SegPay planned
 - **Subscription Management** - Create, cancel, and manage recurring subscriptions
 - **Trial Periods** - Built-in support for trial subscriptions
 - **Webhook Handling** - Automatic webhook processing with signature validation
@@ -31,7 +41,7 @@ Obsidian provides expressive, fluent subscription billing for Laravel applicatio
 
 - PHP 8.4 or higher
 - Laravel 12.0 or higher
-- A CCBill and/or SegPay merchant account
+- A CCBill merchant account (SegPay support coming soon)
 
 ## Installation
 
@@ -63,27 +73,31 @@ Add your payment gateway credentials to your `.env` file:
 ```env
 # Default Gateway
 OBSIDIAN_GATEWAY=ccbill
-OBSIDIAN_FALLBACK_GATEWAY=segpay
 
 # CCBill Configuration
 CCBILL_MERCHANT_ID=your_merchant_id
 CCBILL_SUBACCOUNT_ID=your_subaccount_id
-CCBILL_API_KEY=your_api_key
-CCBILL_API_SECRET=your_api_secret
-CCBILL_SALT=your_salt
+CCBILL_MERCHANT_APP_ID=your_merchant_application_id
+CCBILL_SECRET_KEY=your_secret_key
+CCBILL_DATALINK_USERNAME=your_datalink_username
+CCBILL_DATALINK_PASSWORD=your_datalink_password
 CCBILL_WEBHOOK_SECRET=your_webhook_secret
-
-# SegPay Configuration
-SEGPAY_MERCHANT_ID=your_merchant_id
-SEGPAY_PACKAGE_ID=your_package_id
-SEGPAY_USER_ID=your_user_id
-SEGPAY_API_KEY=your_api_key
-SEGPAY_WEBHOOK_SECRET=your_webhook_secret
 
 # Currency Settings
 OBSIDIAN_CURRENCY=usd
 OBSIDIAN_CURRENCY_LOCALE=en
 ```
+
+### CCBill Requirements
+
+To use the CCBill gateway, you'll need:
+
+1. **Merchant Application ID & Secret Key** - For OAuth 2.0 authentication with the CCBill REST API
+2. **DataLink Credentials** - Username and password for subscription cancellation via the legacy DataLink system
+3. **Webhook Secret** - For validating incoming webhook signatures (HMAC SHA256)
+4. **FlexForms** - A configured FlexForm for payment page generation
+
+> **Important:** CCBill uses OAuth 2.0 for API authentication. The access token is automatically cached and refreshed as needed.
 
 ## Setup
 
@@ -476,34 +490,27 @@ $subscription->cancelNow();
 
 CCBill uses OAuth 2.0 for API authentication and supports:
 
-- Payment token upgrades for subscriptions
-- One-time charges
+- Payment token charging for subscriptions and one-time payments
+- Subscription cancellation via DataLink (legacy CGI system)
 - Webhook events with HMAC SHA256 signature validation
+- ISO 4217 numeric currency codes (USD=840, EUR=978, GBP=826, etc.)
 
 **Webhook Events Supported:**
 
-- `NewSaleSuccess` - New subscription created
-- `RenewalSuccess` - Subscription renewed
-- `RenewalFailure` - Renewal payment failed
-- `Cancellation` - Subscription cancelled
-- `Chargeback` - Chargeback received
-- `Refund` - Refund processed
+| CCBill Event | Normalized Type |
+|--------------|-----------------|
+| `NewSaleSuccess` | `subscription.created` |
+| `NewSaleFailure` | `subscription.failed` |
+| `RenewalSuccess` | `payment.succeeded` |
+| `RenewalFailure` | `payment.failed` |
+| `Cancellation` | `subscription.cancelled` |
+| `Chargeback` | `subscription.chargeback` |
+| `Refund` | `payment.refunded` |
+| `Expiration` | `subscription.expired` |
 
 ### SegPay
 
-SegPay uses X-Authentication header for API calls and supports:
-
-- Purchase API for subscriptions
-- Direct cancellation API
-- Postback events with HMAC SHA256 signature validation
-
-**Postback Actions Supported:**
-
-- `initial` - Initial purchase
-- `rebill` - Recurring billing
-- `decline` - Payment declined
-- `cancel` - Subscription cancelled
-- `chargeback` - Chargeback received
+> **🚧 Coming Soon:** SegPay integration is planned for a future release. All SegPay gateway methods currently throw a `GatewayException` with the message "SegPay gateway is not yet implemented".
 
 ### Fake Gateway
 
@@ -512,14 +519,22 @@ The `FakeGateway` is perfect for testing and development:
 - No external API calls
 - Instant responses
 - Predictable behavior
-- Access to internal state for assertions
+- Static state storage for test assertions
+- `shouldFail()` method for simulating failures
+- `reset()` method for test isolation
 
 ```php
 use Zen\Obsidian\Gateways\FakeGateway;
 
-$gateway = new FakeGateway;
-$subscriptions = $gateway->getSubscriptions();
-$charges = $gateway->getCharges();
+// Reset state between tests
+FakeGateway::reset();
+
+// Simulate a failure
+FakeGateway::shouldFail('Payment declined', 402);
+
+// Access internal state
+$subscriptions = FakeGateway::getSubscriptions();
+$charges = FakeGateway::getCharges();
 ```
 
 ## Security
