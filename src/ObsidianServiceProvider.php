@@ -16,7 +16,6 @@ class ObsidianServiceProvider extends ServiceProvider
   public function boot(): void
   {
     $this->registerRoutes();
-    $this->registerResources();
     $this->registerPublishing();
   }
 
@@ -62,14 +61,6 @@ class ObsidianServiceProvider extends ServiceProvider
   }
 
   /**
-   * Register the package resources.
-   */
-  protected function registerResources(): void
-  {
-    $this->loadViewsFrom(__DIR__.'/../resources/views', 'obsidian');
-  }
-
-  /**
    * Register the package's publishable resources.
    */
   protected function registerPublishing(): void
@@ -82,10 +73,6 @@ class ObsidianServiceProvider extends ServiceProvider
       $this->publishesMigrations([
         __DIR__.'/../database/migrations' => $this->app->databasePath('migrations'),
       ], 'obsidian-migrations');
-
-      $this->publishes([
-        __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/obsidian'),
-      ], 'obsidian-views');
     }
   }
 }
