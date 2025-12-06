@@ -26,7 +26,7 @@ class CcbillWebhookController extends Controller
     // Validate signature
     /** @var string $signature */
     $signature = $request->header('X-CCBill-Signature') ?? '';
-    $gateway = app(CcbillGateway::class);
+    $gateway = resolve(CcbillGateway::class);
 
     try {
       $gateway->validateWebhookSignature($request->getContent(), $signature);

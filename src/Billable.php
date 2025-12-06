@@ -74,7 +74,7 @@ trait Billable
    */
   public function charge(int $amount, string $token, array $options = []): array
   {
-    $gateway = app(PaymentGatewayInterface::class);
+    $gateway = resolve(PaymentGatewayInterface::class);
 
     return $gateway->charge([
       'token' => $token,

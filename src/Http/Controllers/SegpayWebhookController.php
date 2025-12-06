@@ -26,7 +26,7 @@ class SegpayWebhookController extends Controller
     // Validate signature
     /** @var string $signature */
     $signature = $request->header('X-Segpay-Signature') ?? '';
-    $gateway = app(SegpayGateway::class);
+    $gateway = resolve(SegpayGateway::class);
 
     try {
       $gateway->validateWebhookSignature($request->getContent(), $signature);
