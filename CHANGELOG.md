@@ -1,5 +1,17 @@
 # Release Notes
 
+## [1.0.4](https://github.com/zenphporg/obsidian/compare/v1.0.3...v1.0.4) (2025-12-06)
+
+
+### Code Refactoring
+
+* updated the migration with more indexes ([4e73201](https://github.com/zenphporg/obsidian/commit/4e7320169b84fa2fce9357cfe0f342f83853946e))
+
+
+### Maintenance
+
+* composer edit ([ac08615](https://github.com/zenphporg/obsidian/commit/ac0861529d9a5fb670a16f7063c01d0f97d993fb))
+
 ## [1.0.3](https://github.com/zenphporg/obsidian/compare/v1.0.2...v1.0.3) (2025-12-03)
 
 
